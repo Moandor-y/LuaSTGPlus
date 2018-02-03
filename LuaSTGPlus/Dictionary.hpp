@@ -1,11 +1,11 @@
-/// @file Dictionary.h
-/// @brief »ùÓÚMPQ¹þÏ£µÄ×Öµä
+ï»¿/// @file Dictionary.h
+/// @brief åŸºäºŽMPQå“ˆå¸Œçš„å­—å…¸
 #pragma once
 #include "Global.h"
 
 namespace LuaSTGPlus
 {
-	/// @brief MPQHash±í
+	/// @brief MPQHashè¡¨
 	class MPQHashCryptTable
 	{
 	public:
@@ -40,7 +40,7 @@ namespace LuaSTGPlus
 		}
 	};
 
-	/// @brief MPQ HashËã·¨
+	/// @brief MPQ Hashç®—æ³•
 	template <uint32_t dwHashType>
 	uint32_t MPQHash(const char* key)
 	{
@@ -55,7 +55,7 @@ namespace LuaSTGPlus
 		return seed1;
 	}
 
-	/// @brief ×Öµä¼ü
+	/// @brief å­—å…¸é”®
 	struct DictionaryKey
 	{
 		uint32_t HashKey;

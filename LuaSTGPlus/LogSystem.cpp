@@ -1,4 +1,4 @@
-#include "LogSystem.h"
+ï»¿#include "LogSystem.h"
 #include "Utility.h"
 
 using namespace std;
@@ -14,7 +14,7 @@ LogSystem::LogSystem()
 	: m_LogFile(LLOGFILE, ios::out)
 {
 	if (!m_LogFile)
-		LERROR("ÎŞ·¨´´½¨ÈÕÖ¾ÎÄ¼ş'%s'", LLOGFILE);
+		LERROR("æ— æ³•åˆ›å»ºæ—¥å¿—æ–‡ä»¶'%s'", LLOGFILE);
 }
 
 LogSystem::~LogSystem()
@@ -48,7 +48,7 @@ LNOINLINE void LogSystem::Log(LogType type, const wchar_t* info, ...)throw()
 	}
 	catch (const bad_alloc&)
 	{
-		OutputDebugString(L"[ERRO] ¼ÇÂ¼ÈÕÖ¾Ê±·¢ÉúÄÚ´æ²»×ã´íÎó");
+		OutputDebugString(L"[ERRO] è®°å½•æ—¥å¿—æ—¶å‘ç”Ÿå†…å­˜ä¸è¶³é”™è¯¯");
 		return;
 	}
 	
@@ -63,7 +63,7 @@ LNOINLINE void LogSystem::Log(LogType type, const wchar_t* info, ...)throw()
 	}
 	catch (const bad_alloc&)
 	{
-		OutputDebugString(L"[ERRO] ¼ÇÂ¼ÈÕÖ¾Ê±·¢ÉúÄÚ´æ²»×ã´íÎó");
+		OutputDebugString(L"[ERRO] è®°å½•æ—¥å¿—æ—¶å‘ç”Ÿå†…å­˜ä¸è¶³é”™è¯¯");
 		return;
 	}
 }

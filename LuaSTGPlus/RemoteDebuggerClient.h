@@ -1,11 +1,11 @@
-#pragma once
+ï»¿#pragma once
 #include "Global.h"
 #include "ResourceMgr.h"
 #include "Bencode.h"
 
 namespace LuaSTGPlus
 {
-	/// @brief Ô¶¶Ëµ÷ÊÔÆ÷¿Í»§¶Ë
+	/// @brief è¿œç«¯è°ƒè¯•å™¨å®¢æˆ·ç«¯
 	class RemoteDebuggerClient
 	{
 	private:

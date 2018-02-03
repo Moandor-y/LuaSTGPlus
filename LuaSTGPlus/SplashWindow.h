@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Global.h"
 
 #include <thread>
@@ -6,7 +6,7 @@
 
 namespace LuaSTGPlus
 {
-	/// @brief ÔØÈë´°¿Ú
+	/// @brief è½½å…¥çª—å£
 	class SplashWindow
 	{
 	public:
