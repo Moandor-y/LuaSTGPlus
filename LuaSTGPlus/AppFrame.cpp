@@ -1451,6 +1451,37 @@ bool AppFrame::Init()LNOEXCEPT
 	if (!SafeCallGlobalFunction(LFUNC_GAMEINIT))
 		return false;
 
+  	m_fFPS = 0.f;
+#if (defined LDEVVERSION) || (defined LDEBUG)
+	m_UpdateTimer = 0.f;
+	m_RenderTimer = 0.f;
+	m_PerformanceUpdateTimer = 0.f;
+	m_PerformanceUpdateCounter = 0.f;
+	m_FPSTotal = 0.f;
+	m_ObjectTotal = 0.f;
+	m_UpdateTimerTotal = 0.f;
+	m_RenderTimerTotal = 0.f;
+#endif
+
+	if (m_bSplashWindowEnabled)  // 显示过载入窗口
+	{
+		// 显示窗口
+		m_pMainWindow->MoveToCenter();
+		m_pMainWindow->SetVisiable(true);
+
+		// 改变显示模式到全屏
+		if (!m_OptionWindowed)
+			ChangeVideoMode((int)m_OptionResolution.x, (int)m_OptionResolution.y, m_OptionWindowed, m_OptionVsync);
+	}
+	m_bSplashWindowEnabled = false;
+
+	// 窗口前移、显示、隐藏鼠标指针
+	// SetActiveWindow((HWND)m_pMainWindow->GetHandle());
+	SetForegroundWindow((HWND)m_pMainWindow->GetHandle());
+	// BringWindowToTop((HWND)m_pMainWindow->GetHandle());
+	m_pMainWindow->SetHideIME(true);
+	m_pMainWindow->HideMouse(!m_OptionSplash);
+
 	m_iStatus = AppStatus::Initialized;
 	LINFO("初始化成功完成");
 	return true;
@@ -1496,37 +1527,6 @@ void AppFrame::Run()LNOEXCEPT
 {
 	LASSERT(m_iStatus == AppStatus::Initialized);
 	LINFO("开始执行游戏循环");
-
-	m_fFPS = 0.f;
-#if (defined LDEVVERSION) || (defined LDEBUG)
-	m_UpdateTimer = 0.f;
-	m_RenderTimer = 0.f;
-	m_PerformanceUpdateTimer = 0.f;
-	m_PerformanceUpdateCounter = 0.f;
-	m_FPSTotal = 0.f;
-	m_ObjectTotal = 0.f;
-	m_UpdateTimerTotal = 0.f;
-	m_RenderTimerTotal = 0.f;
-#endif
-
-	if (m_bSplashWindowEnabled)  // 显示过载入窗口
-	{
-		// 显示窗口
-		m_pMainWindow->MoveToCenter();
-		m_pMainWindow->SetVisiable(true);
-
-		// 改变显示模式到全屏
-		if (!m_OptionWindowed)
-			ChangeVideoMode((int)m_OptionResolution.x, (int)m_OptionResolution.y, m_OptionWindowed, m_OptionVsync);
-	}
-	m_bSplashWindowEnabled = false;
-
-	// 窗口前移、显示、隐藏鼠标指针
-	SetActiveWindow((HWND)m_pMainWindow->GetHandle());  // 然并卵
-	// SetForegroundWindow((HWND)m_pMainWindow->GetHandle());
-	// BringWindowToTop((HWND)m_pMainWindow->GetHandle());
-	m_pMainWindow->SetHideIME(true);
-	m_pMainWindow->HideMouse(!m_OptionSplash);
 
 	// 启动游戏循环
 	m_pEngine->Run(F2DENGTHREADMODE_MULTITHREAD, m_OptionFPSLimit);
