@@ -439,8 +439,6 @@ LNOINLINE void AppFrame::SetTitle(const char* v)LNOEXCEPT
 
 LNOINLINE bool AppFrame::ChangeVideoMode(int width, int height, bool windowed, bool vsync)LNOEXCEPT
 {
-	if (m_iStatus == AppStatus::Initialized)
-	{
 		// 切换到新的视频选项
 		if (FCYOK(m_pRenderDev->SetBufferSize(
 			(fuInt)width,
@@ -484,7 +482,6 @@ LNOINLINE bool AppFrame::ChangeVideoMode(int width, int height, bool windowed, b
 				(int)m_OptionResolution.x, (int)m_OptionResolution.y, m_OptionVsync, m_OptionWindowed,
 				width, height, vsync, windowed);
 		}
-	}
 	return false;
 }
 
