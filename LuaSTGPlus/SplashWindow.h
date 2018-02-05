@@ -26,7 +26,7 @@ private:
   void threadJob();
 
 public:
-  void ShowSplashWindow(Gdiplus::Image* bkImage = nullptr)LNOEXCEPT;
+  void ShowSplashWindow(Gdiplus::Image* bkImage)LNOEXCEPT;
   void HideSplashWindow()LNOEXCEPT;
 
 protected:

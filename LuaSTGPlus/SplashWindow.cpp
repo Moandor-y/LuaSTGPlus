@@ -158,7 +158,7 @@ void SplashWindow::ShowSplashWindow(Gdiplus::Image* bkImage)LNOEXCEPT {
     if (bkImage)
       m_bkImage = bkImage->Clone();
     else
-      m_bkImage = LoadImageFromResource(IDB_SPLASH, L"PNG");
+      m_bkImage = new Image(static_cast<const WCHAR*>(nullptr));
 
     if (m_bkImage)
       m_SplashWindowThread = make_unique<std::thread>(Wrapper::ThreadJob, this);

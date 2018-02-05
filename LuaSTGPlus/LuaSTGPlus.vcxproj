@@ -186,10 +186,6 @@
   <ItemGroup>
     <ResourceCompile Include="LuaSTGPlus.rc" />
   </ItemGroup>
-  <ItemGroup>
-    <Image Include="app.ico" />
-    <Image Include="splash.png" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
