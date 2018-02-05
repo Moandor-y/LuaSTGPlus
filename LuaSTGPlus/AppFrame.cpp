@@ -1333,7 +1333,6 @@ bool AppFrame::Init()LNOEXCEPT {
   // luastg不使用ZBuffer，将其关闭。
   m_pRenderDev->SetZBufferEnable(false);
 
-#ifdef IDI_APPICON
   // 设置窗口图标
   HICON hIcon = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_APPICON));
   SendMessage((HWND)m_pMainWindow->GetHandle(), WM_SETICON, (WPARAM)ICON_BIG,
@@ -1341,7 +1340,6 @@ bool AppFrame::Init()LNOEXCEPT {
   SendMessage((HWND)m_pMainWindow->GetHandle(), WM_SETICON, (WPARAM)ICON_SMALL,
               (LPARAM)hIcon);
   DestroyIcon(hIcon);
-#endif
 
   // 若没有载入窗口，则显示游戏窗口
   if (!m_bSplashWindowEnabled) {
